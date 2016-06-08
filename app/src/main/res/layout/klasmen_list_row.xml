@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:focusable="true"
+    android:paddingLeft="16dp"
+    android:paddingRight="16dp"
+    android:paddingTop="10dp"
+    android:paddingBottom="10dp"
+    android:clickable="true"
+    android:background="?android:attr/selectableItemBackground"
+    android:orientation="vertical">
+
+
+    <TextView
+        android:id="@+id/teamName"
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="20dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="85dp" />
+    <TextView
+        android:id="@+id/teamRank"
+        android:textColor="@color/red"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/teamName"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="20dp"
+        android:textSize="40dp" />
+    <TextView
+        android:id="@+id/teamPlayed"
+        android:textColor="@color/black"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/teamName"
+        android:layout_marginLeft="85dp" />
+    <TextView
+        android:id="@+id/teamGoal"
+        android:textColor="@color/black"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/teamName"
+        android:layout_marginLeft="155dp" />
+    <TextView
+        android:id="@+id/teamGoalsAgainst"
+        android:textColor="@color/black"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/teamGoal"
+        android:layout_marginLeft="85dp" />
+    <TextView
+        android:id="@+id/teamGoalDifference"
+        android:textColor="@color/black"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/teamGoal"
+        android:layout_marginLeft="155dp" />
+
+
+    <ImageView
+        android:id="@+id/teamImage"
+        android:layout_width="60dp"
+        android:layout_height="60dp"/>
+</RelativeLayout>

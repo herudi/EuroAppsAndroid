@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_table_league"
+            app:actionViewClass="android.widget.TextView"
+            android:icon="@drawable/table_league"
+            android:title="Klasmen Grup" />
+        <item
+            android:id="@+id/nav_match"
+            app:actionViewClass="android.widget.TextView"
+            android:icon="@drawable/football"
+            android:title="Jadwal &amp; Hasil" />
+    </group>
+
+    <item android:title="Other">
+        <menu>
+            <item
+                android:id="@+id/nav_about"
+                android:icon="@drawable/info_about"
+                android:title="About" />
+            <item
+                android:id="@+id/nav_exit"
+                android:icon="@drawable/shutdown"
+                android:title="Exit" />
+        </menu>
+    </item>
+
+</menu>
