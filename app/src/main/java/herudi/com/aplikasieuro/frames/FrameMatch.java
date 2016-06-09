@@ -201,34 +201,49 @@ public class FrameMatch extends Fragment {
     }
 
     private void firstLoad(){
-        RealmResults<Matches> result = realm.where(Matches.class).equalTo("match", match).findAll();
-        if (result.size() == 0) {
-            new Helper().execute();
+        //Jika Tidak Meload helpermatches dari myapplication
+//        RealmResults<Matches> result = realm.where(Matches.class).equalTo("match", match).findAll();
+//        if (result.size() == 0) {
+//            new Helper().execute();
+//        } else {
+//            if (isNetworkAvaliable(getContext())) {
+//                findByMatch();
+//            } else {
+//                findByMatch();
+//                Snackbar snackbar = Snackbar.make(coordinatorLayoutView, "No internet connection!", Snackbar.LENGTH_LONG);
+//                snackbar.show();
+//            }
+//        }
+        if (isNetworkAvaliable(getContext())) {
+            findByMatch();
         } else {
-            if (isNetworkAvaliable(getContext())) {
-                findByMatch();
-            } else {
-                findByMatch();
-                Snackbar snackbar = Snackbar.make(coordinatorLayoutView, "No internet connection!", Snackbar.LENGTH_LONG);
-                snackbar.show();
-            }
-
+            findByMatch();
+            Snackbar snackbar = Snackbar.make(coordinatorLayoutView, "No internet connection!", Snackbar.LENGTH_LONG);
+            snackbar.show();
         }
     }
 
     private void realodMatch() {
-        RealmResults<Matches> result = realm.where(Matches.class).equalTo("match", match).findAll();
-        if (result.size() == 0) {
-            new Helper().execute();
+        //Jika Tidak Meload helpermatches dari myapplication
+//        RealmResults<Matches> result = realm.where(Matches.class).equalTo("match", match).findAll();
+//        if (result.size() == 0) {
+//            new Helper().execute();
+//        } else {
+//            if (isNetworkAvaliable(getContext())) {
+//                new updateData().execute();
+//            } else {
+//                findByMatch();
+//                Snackbar snackbar = Snackbar.make(coordinatorLayoutView, "No internet connection!", Snackbar.LENGTH_LONG);
+//                snackbar.show();
+//            }
+//
+//        }
+        if (isNetworkAvaliable(getContext())) {
+            new updateData().execute();
         } else {
-            if (isNetworkAvaliable(getContext())) {
-                new updateData().execute();
-            } else {
-                findByMatch();
-                Snackbar snackbar = Snackbar.make(coordinatorLayoutView, "No internet connection!", Snackbar.LENGTH_LONG);
-                snackbar.show();
-            }
-
+            findByMatch();
+            Snackbar snackbar = Snackbar.make(coordinatorLayoutView, "No internet connection!", Snackbar.LENGTH_LONG);
+            snackbar.show();
         }
 
     }

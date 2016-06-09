@@ -1,10 +1,13 @@
 package herudi.com.aplikasieuro;
 
-import android.content.Intent;
+import android.content.Context;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.StrictMode;
+import android.support.design.widget.Snackbar;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
@@ -13,7 +16,6 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.MenuItem;
 import android.view.View;
-
 import org.joda.time.DateTime;
 import org.joda.time.DateTimeZone;
 import org.joda.time.format.DateTimeFormat;
@@ -21,17 +23,12 @@ import org.joda.time.format.DateTimeFormatter;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
-
 import herudi.com.aplikasieuro.models.Matches;
 import herudi.com.aplikasieuro.utils.JSONParser;
 import herudi.com.aplikasieuro.utils.MatchAdapter;
-import herudi.com.aplikasieuro.utils.RecyclerItemClickListener;
 import herudi.com.aplikasieuro.utils.SimpleDividerItemDecoration;
 import io.realm.Realm;
 import io.realm.RealmList;
@@ -60,6 +57,7 @@ public class ActivityDetail extends AppCompatActivity {
         setContentView(R.layout.activity_detail_team);
         recyclerView = (RecyclerView) findViewById(R.id.recycler_view);
         swipeRefreshLayout = (SwipeRefreshLayout) findViewById(R.id.swipe_container);
+        coordinatorLayoutView = findViewById(R.id.snackbarPosition);
         mAdapter = new MatchAdapter(matchList);
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(this);
         recyclerView.addItemDecoration(new SimpleDividerItemDecoration(getResources()));
@@ -88,7 +86,7 @@ public class ActivityDetail extends AppCompatActivity {
                 handler.postDelayed(new Runnable() {
                     @Override
                     public void run() {
-                        new updateData().execute();
+                        reloadMatch();
                     }
                 }, 1000);
             } catch (Exception e) {
@@ -103,6 +101,32 @@ public class ActivityDetail extends AppCompatActivity {
         matchList.addAll(insert);
         mAdapter.notifyDataSetChanged();
         swipeRefreshLayout.setRefreshing(false);
+    }
+
+    private void reloadMatch() {
+        if (isNetworkAvaliable(this)) {
+            new updateData().execute();
+        } else {
+            new loadAsync().execute();
+            Snackbar snackbar = Snackbar.make(coordinatorLayoutView, "No internet connection!", Snackbar.LENGTH_LONG);
+            snackbar.show();
+        }
+    }
+
+    public boolean isNetworkAvaliable(Context ctx) {
+        ConnectivityManager connectivityManager = (ConnectivityManager) ctx
+                .getSystemService(Context.CONNECTIVITY_SERVICE);
+        if ((connectivityManager
+                .getNetworkInfo(ConnectivityManager.TYPE_MOBILE) != null && connectivityManager
+                .getNetworkInfo(ConnectivityManager.TYPE_MOBILE).getState() == NetworkInfo.State.CONNECTED)
+                || (connectivityManager
+                .getNetworkInfo(ConnectivityManager.TYPE_WIFI) != null && connectivityManager
+                .getNetworkInfo(ConnectivityManager.TYPE_WIFI)
+                .getState() == NetworkInfo.State.CONNECTED)) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
     private class loadAsync extends AsyncTask<String, String, String> {
@@ -197,6 +221,8 @@ public class ActivityDetail extends AppCompatActivity {
         }
 
     }
+
+
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {

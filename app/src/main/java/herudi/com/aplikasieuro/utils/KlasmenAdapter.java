@@ -11,7 +11,6 @@ import java.util.List;
 
 import herudi.com.aplikasieuro.R;
 import herudi.com.aplikasieuro.models.Klasmens;
-import herudi.com.aplikasieuro.models.Matches;
 
 /**
  * Created by herudi-sahimar on 03/06/2016.
