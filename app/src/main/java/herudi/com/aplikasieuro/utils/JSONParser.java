@@ -28,7 +28,7 @@ public class JSONParser {
             try {
                 HttpURLConnection c = (HttpURLConnection) urlp.openConnection();
                 c.setRequestMethod("GET");
-                c.setRequestProperty("X-Auth-Token", "90ad437f3da640d0b1d47bc382ce12d3");
+                c.setRequestProperty("X-Auth-Token", "your-api-key-here");
                 c.setReadTimeout(10000);
                 c.connect();
                 reader = new BufferedReader(new InputStreamReader(c.getInputStream(), "UTF-8"));
