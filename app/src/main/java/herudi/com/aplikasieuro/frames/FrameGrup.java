@@ -195,7 +195,8 @@ public class FrameGrup extends Fragment {
                     k.setTeamGoal("G = " + grup.getString("goals"));
                     k.setTeamGoalAga("GA = " + grup.getString("goalsAgainst"));
                     k.setTeamGoalDif("GD = " + grup.getString("goalDifference"));
-                    k.setTeamRank(grup.getString("rank"));
+                    k.setTeamRank("Rank = "+grup.getString("rank"));
+                    k.setTeamPoint(grup.getString("points"));
                     String strImg = "drawable/" + grup.getString("team").substring(0, 4).toLowerCase();
                     int img = getContext().getResources().getIdentifier(strImg, null, getContext().getPackageName());
                     k.setTeamImage(img);
@@ -237,11 +238,16 @@ public class FrameGrup extends Fragment {
                         realm.beginTransaction();
                         Klasmens k = update.get(i);
                         k.setGrup(teamOfGrup);
+                        k.setTeamName(grup.getString("team"));
                         k.setTeamPlayed("GP = " + grup.getString("playedGames"));
                         k.setTeamGoal("G = " + grup.getString("goals"));
                         k.setTeamGoalAga("GA = " + grup.getString("goalsAgainst"));
                         k.setTeamGoalDif("GD = " + grup.getString("goalDifference"));
-                        k.setTeamRank(grup.getString("rank"));
+                        k.setTeamRank("Rank = "+grup.getString("rank"));
+                        k.setTeamPoint(grup.getString("points"));
+                        String strImg = "drawable/" + grup.getString("team").substring(0, 4).toLowerCase();
+                        int img = getContext().getResources().getIdentifier(strImg, null, getContext().getPackageName());
+                        k.setTeamImage(img);
                         realm.commitTransaction();
 
                     }

@@ -6,8 +6,8 @@ import io.realm.RealmObject;
  * Created by herudi-sahimar on 05/06/2016.
  */
 
-public class Klasmens extends RealmObject{
-    private String teamName,teamPlayed,teamGoal,teamGoalAga,teamGoalDif,teamRank,grup;
+public class Klasmens extends RealmObject {
+    private String teamName, teamPlayed, teamGoal, teamGoalAga, teamGoalDif, teamRank, grup, teamPoint;
     private int teamImage;
 
     public Klasmens() {
@@ -75,5 +75,13 @@ public class Klasmens extends RealmObject{
 
     public void setGrup(String grup) {
         this.grup = grup;
+    }
+
+    public String getTeamPoint() {
+        return teamPoint;
+    }
+
+    public void setTeamPoint(String teamPoint) {
+        this.teamPoint = teamPoint;
     }
 }

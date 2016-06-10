@@ -19,7 +19,7 @@ public class KlasmenAdapter extends RecyclerView.Adapter<KlasmenAdapter.MyViewHo
     private List<Klasmens> klasmensList;
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
-        public TextView teamName,teamPlayed,teamGoal,teamGoalAga,teamGoalDif,teamRank;
+        public TextView teamName,teamPlayed,teamGoal,teamGoalAga,teamGoalDif,teamRank,teamPoint;
         public ImageView teamImage;
 
         public MyViewHolder(View view) {
@@ -31,6 +31,7 @@ public class KlasmenAdapter extends RecyclerView.Adapter<KlasmenAdapter.MyViewHo
             teamGoalAga = (TextView) view.findViewById(R.id.teamGoalsAgainst);
             teamGoalDif = (TextView) view.findViewById(R.id.teamGoalDifference);
             teamRank = (TextView) view.findViewById(R.id.teamRank);
+            teamPoint = (TextView) view.findViewById(R.id.teamPoints);
 
         }
     }
@@ -55,7 +56,7 @@ public class KlasmenAdapter extends RecyclerView.Adapter<KlasmenAdapter.MyViewHo
         holder.teamGoalAga.setText(m.getTeamGoalAga());
         holder.teamGoalDif.setText(m.getTeamGoalDif());
         holder.teamRank.setText(m.getTeamRank());
-
+        holder.teamPoint.setText(m.getTeamPoint());
     }
 
     @Override

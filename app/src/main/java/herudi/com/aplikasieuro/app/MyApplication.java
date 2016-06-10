@@ -168,7 +168,8 @@ public class MyApplication extends Application {
                         .addField("teamGoalDif", String.class)
                         .addField("teamRank", String.class)
                         .addField("grup", String.class)
-                        .addField("teamImage", int.class);
+                        .addField("teamImage", int.class)
+                        .addField("teamPoint", String.class);
                 oldVersion++;
             }
         }
